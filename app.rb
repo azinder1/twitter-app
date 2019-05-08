@@ -19,7 +19,7 @@ require('./lib/music_notes')
 Dotenv.load
 
 get('/') do
-  @user_tweets = $twitter_client.user_timeline('Twittamir_Putin')
+  @user_tweets = $twitter_client.user_timeline('TwittamirPutin')
   @tweets = []
   @translated = []
   erb(:index)
@@ -37,6 +37,7 @@ post('/tweet') do
     tweet = '@KremlinRussia_E ' + tweet
   end
   $twitter_client.update(tweet)
+
   redirect('/emoji')
 end
 
@@ -58,14 +59,14 @@ post('/tweet_search_soviet') do
 end
 
 get('/keyword_search') do
-  @user_tweets = $twitter_client.user_timeline('Twittamir_Putin')
+  @user_tweets = $twitter_client.user_timeline('TwittamirPutin')
   @tweets = []
   @translated = []
   erb(:keyword_search)
 end
 
 post('/keyword_search') do
-  @user_tweets = $twitter_client.user_timeline('Twittamir_Putin')
+  @user_tweets = $twitter_client.user_timeline('TwittamirPutin')
   search_term = params['search-term']
   @translated = []
   # language = params['language'].to_sym
@@ -91,12 +92,12 @@ post('/keyword_search') do
 end
 
 get '/emoji' do
-  @user_tweets = $twitter_client.user_timeline('Twittamir_Putin')
+  @user_tweets = $twitter_client.user_timeline('TwittamirPutin')
   erb(:emoji)
 end
 
 post '/emoji' do
-  @user_tweets = $twitter_client.user_timeline('Twittamir_Putin')
+  @user_tweets = $twitter_client.user_timeline('TwittamirPutin')
   tweet = params['sentence']
 
   @return = {:user_name => $twitter_client.user.name, :screen_name => $twitter_client.user.screen_name,
@@ -120,14 +121,14 @@ get '/tweet_back' do
 end
 
 get '/keyword_search/soviet' do
-  @user_tweets = $twitter_client.user_timeline('Twittamir_Putin')
+  @user_tweets = $twitter_client.user_timeline('TwittamirPutin')
   @tweets = []
   @translated = []
   erb :keyword_search_soviet,:layout => :layout_soviet
 end
 
 post'/keyword_search/soviet' do
-  @user_tweets = $twitter_client.user_timeline('Twittamir_Putin')
+  @user_tweets = $twitter_client.user_timeline('TwittamirPutin')
   search_term = params['search-term']
   @translated = []
   # language = params['language'].to_sym
