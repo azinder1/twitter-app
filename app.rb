@@ -20,6 +20,9 @@ Dotenv.load
 
 get('/') do
   @user_tweets = $twitter_client.user_timeline('TwittamirPutin')
+  if @user_tweets.length > 10
+    @user_tweets =  @user_tweets.slice(0,10)
+  end
   @tweets = []
   @translated = []
   erb(:index)
@@ -60,6 +63,9 @@ end
 
 get('/keyword_search') do
   @user_tweets = $twitter_client.user_timeline('TwittamirPutin')
+  if @user_tweets.length > 10
+    @user_tweets =  @user_tweets.slice(0,10)
+  end
   @tweets = []
   @translated = []
   erb(:keyword_search)
@@ -67,6 +73,9 @@ end
 
 post('/keyword_search') do
   @user_tweets = $twitter_client.user_timeline('TwittamirPutin')
+  if @user_tweets.length > 10
+    @user_tweets =  @user_tweets.slice(0,10)
+  end
   search_term = params['search-term']
   @translated = []
   # language = params['language'].to_sym
@@ -93,12 +102,16 @@ end
 
 get '/emoji' do
   @user_tweets = $twitter_client.user_timeline('TwittamirPutin')
+  if @user_tweets.length > 10
+    @user_tweets =  @user_tweets.slice(0,10)
+  end
   erb(:emoji)
 end
 
 post '/emoji' do
   @user_tweets = $twitter_client.user_timeline('TwittamirPutin')
   tweet = params['sentence']
+# time consuming operation
 
   @return = {:user_name => $twitter_client.user.name, :screen_name => $twitter_client.user.screen_name,
   :created_at => Time.now, :text => tweet, :emoji => tweet.to_array,
@@ -106,7 +119,7 @@ post '/emoji' do
   :spanish => (EasyTranslate.translate(tweet, :to => :spanish)),
   :japanese => (EasyTranslate.translate(tweet, :to => :japanese)),
   :music => tweet.music_encryption}
-
+ 
   erb(:emoji)
 end
 

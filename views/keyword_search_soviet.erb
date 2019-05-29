@@ -5,11 +5,11 @@
     <p>by <a href="https://twitter.com/TwittamirPutin">@TwittamirPutin</a></p>
     <hr>
   <% @user_tweets.each do |tweet| %>
-  <div class="tweets">
-    <p><%= tweet.text.add_tags %> <p>
+    <div class="tweets">
+      <p><%= tweet.text.add_tags %> <p>
     </div><hr>
     <% end %>
-    <% end %>
+  <% end %>
   </div>
   <div class="col s9">
     <div class="row">

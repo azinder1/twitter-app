@@ -1,5 +1,6 @@
 source('https://rubygems.org')
 
+ruby '2.4.5'
 gem('sinatra')
 gem('sinatra-contrib')
 gem('rspec')
@@ -12,4 +13,5 @@ gem('rake')
 gem('twitter')
 gem('easy_translate')
 gem('dotenv')
+gem('newrelic_rpm')
 # gem ('whenever')
