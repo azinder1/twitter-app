@@ -16,6 +16,7 @@ require('./lib/keyword')
 require('./lib/sentence')
 require('./lib/add_tags')
 require('./lib/music_notes')
+require 'newrelic_rpm'
 Dotenv.load
 
 get('/') do
